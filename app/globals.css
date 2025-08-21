@@ -1,27 +1,142 @@
+/* Importar fuentes */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap");
+
 @layer theme, base, mui, components, utilities;
 @import "tailwindcss";
 
 :root {
+  /* Sistema de colores Orbfit */
+  --orbit-blue: #5b4fe9;
+  --orbit-blue-hover: #4a3fd8;
+  --orbit-blue-active: #3a2fc7;
+  --orbit-blue-light: #7b6ff9;
+
+  /* Escala de grises */
+  --black: #0a0a0a;
+  --gray-dark: #404040;
+  --gray: #808080;
+  --gray-light: #e5e5e5;
+  --white: #ffffff;
+
+  /* Gradiente signature */
+  --orbit-gradient: linear-gradient(
+    135deg,
+    #5b4fe9 0%,
+    #e94f8a 50%,
+    #f9a826 100%
+  );
+
+  /* Colores de fondo y texto */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+
+  /* Tipografías */
+  --font-heading: "Inter", sans-serif;
+  --font-body: "Work Sans", sans-serif;
+
+  /* Espaciado base (8px) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
 }
 
 @theme inline {
+  --color-orbit: var(--orbit-blue);
+  --color-orbit-hover: var(--orbit-blue-hover);
+  --color-orbit-active: var(--orbit-blue-active);
+  --color-orbit-light: var(--orbit-blue-light);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+
+  --font-sans: var(--font-body);
   --font-mono: var(--font-geist-mono);
 }
 
+/* Modo oscuro opcional (si lo necesitas en el futuro) */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #ffffff;
+    --gray-light: #1a1a1a;
+    --gray: #606060;
+    --gray-dark: #b0b0b0;
   }
 }
 
+/* Estilos base */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Títulos con la fuente Inter */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--foreground);
+}
+
+/* Clases utilitarias para el gradiente */
+.orbit-gradient {
+  background: var(--orbit-gradient);
+}
+
+.orbit-gradient-text {
+  background: var(--orbit-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Transiciones suaves por defecto */
+button,
+a,
+input,
+textarea,
+select {
+  transition: all 0.2s ease;
+}
+
+/* Focus visible mejorado */
+:focus-visible {
+  outline: 2px solid var(--orbit-blue);
+  outline-offset: 2px;
+}
+
+/* Selección de texto con color de marca */
+::selection {
+  background: var(--orbit-blue-light);
+  color: var(--white);
+}
+
+/* Scrollbar personalizada (opcional) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-dark);
 }
