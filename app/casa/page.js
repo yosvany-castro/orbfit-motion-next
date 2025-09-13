@@ -10,7 +10,7 @@ export default function Home() {
         <div className="flex justify-center items-center py-16 md:py-0 px-8 sm:px-16">
           <div className="max-w-xl flex flex-col space-y-8 text-center md:text-left">
             {/* Headline Principal con subrayado SVG ajustado */}
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-5xl lg:text-6xl font-semibold leading-tight">
               Your Business Running{" "}
               <span className="relative inline-block">
                 Without You
