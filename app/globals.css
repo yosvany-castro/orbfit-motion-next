@@ -1,5 +1,5 @@
-/* Importar fuentes */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap");
+/* Importar fuente Poppins desde el layout, ya no es necesario aquí */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 @layer theme, base, mui, components, utilities;
 @import "tailwindcss";
@@ -11,10 +11,16 @@
   --orbit-blue-active: #3a2fc7;
   --orbit-blue-light: #7b6ff9;
 
-  /* Escala de grises */
+  /* Escala de grises y negros */
   --black: #0a0a0a;
-  --gray-dark: #404040;
+  --foreground-muted: rgba(
+    10,
+    10,
+    10,
+    0.75
+  ); /* Negro más claro (75% opacidad) */
   --gray: #808080;
+  --gray-dark: #404040;
   --gray-light: #e5e5e5;
   --white: #ffffff;
 
@@ -31,67 +37,28 @@
   --foreground: #0a0a0a;
 
   /* Tipografías */
-  --font-heading: "Inter", sans-serif;
-  --font-body: "Work Sans", sans-serif;
-
-  /* Espaciado base (8px) */
-  --space-xs: 8px;
-  --space-sm: 16px;
-  --space-md: 24px;
-  --space-lg: 32px;
-  --space-xl: 48px;
-  --space-2xl: 64px;
-}
-
-@theme inline {
-  --color-orbit: var(--orbit-blue);
-  --color-orbit-hover: var(--orbit-blue-hover);
-  --color-orbit-active: var(--orbit-blue-active);
-  --color-orbit-light: var(--orbit-blue-light);
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --font-sans: var(--font-body);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* Modo oscuro opcional (si lo necesitas en el futuro) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-    --gray-light: #1a1a1a;
-    --gray: #606060;
-    --gray-dark: #b0b0b0;
-  }
+  --font-sans: "Poppins", sans-serif; /* Nueva fuente principal */
 }
 
 /* Estilos base */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Títulos con la fuente Inter */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-sans);
   line-height: 1.2;
   color: var(--foreground);
-}
-
-/* Clases utilitarias para el gradiente */
-.orbit-gradient {
-  background: var(--orbit-gradient);
 }
 
 .orbit-gradient-text {
@@ -101,7 +68,6 @@ h6 {
   background-clip: text;
 }
 
-/* Transiciones suaves por defecto */
 button,
 a,
 input,
@@ -110,19 +76,17 @@ select {
   transition: all 0.2s ease;
 }
 
-/* Focus visible mejorado */
 :focus-visible {
   outline: 2px solid var(--orbit-blue);
   outline-offset: 2px;
 }
 
-/* Selección de texto con color de marca */
 ::selection {
   background: var(--orbit-blue-light);
   color: var(--white);
 }
 
-/* Scrollbar personalizada (opcional) */
+/* Scrollbar personalizada (Restaurada) */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
