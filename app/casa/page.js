@@ -1,8 +1,30 @@
 "use client";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import Image from "next/image";
+import InteractiveCarousel from "@/components/InteractiveCarousel";
 
 export default function Home() {
+  const industryImages = [
+    "https://picsum.photos/seed/picsum1/600/800",
+    "https://picsum.photos/seed/picsum2/600/800",
+    "https://picsum.photos/seed/picsum3/600/800",
+    "https://picsum.photos/seed/picsum4/600/800",
+    "https://picsum.photos/seed/picsum5/600/800",
+    "https://picsum.photos/seed/picsum6/600/800",
+    "https://picsum.photos/seed/picsum7/600/800",
+  ];
+
+  const industries = [
+    "E-commerce",
+    "Real Estate",
+    "Healthcare",
+    "Legal",
+    "Automotive",
+    "Hospitality",
+    "Fitness & Wellness",
+    "Education",
+  ];
+
   return (
     <div className="min-h-screen bg-white text-[var(--foreground)]">
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
@@ -149,6 +171,48 @@ export default function Home() {
             priority
             sizes="50vw"
           />
+        </div>
+      </section>
+      {/* --- Sección 2. Industrias --- */}
+      <section id="industries" className="relative py-20 bg-[#f5f7fb]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-semibold">
+                Industries We&apos;ve Transformed:
+              </h2>
+              <p className="mt-3 max-w-2xl text-[var(--foreground-muted)]">
+                From lead-gen to fulfillment, we plug automation into your stack
+                and tailor playbooks per vertical.
+              </p>
+            </div>
+
+            <a
+              href="#cases"
+              className="hidden md:inline-block text-sm font-medium underline underline-offset-4"
+            >
+              View case studies →
+            </a>
+          </div>
+
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {industries.map((i) => (
+              <li
+                key={i}
+                className="px-3 py-1.5 rounded-full text-sm bg-white border border-black/5 shadow-sm"
+              >
+                {i}
+              </li>
+            ))}
+          </ul>
+
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen">
+            <InteractiveCarousel
+              images={industryImages}
+              noBackground
+              fullWidth
+            />
+          </div>
         </div>
       </section>
     </div>

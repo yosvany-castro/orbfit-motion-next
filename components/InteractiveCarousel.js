@@ -100,7 +100,7 @@ function CarouselCard({ src, index, scrollProgress, totalImages }) {
 // -----------------------------
 // Carrusel principal
 // -----------------------------
-export default function SimpleCarousel({ images }) {
+export default function SimpleCarousel({ images, noBackground = false }) {
   const containerRef = useRef(null);
   const scrollRef = useRef(null);
 
@@ -346,7 +346,11 @@ export default function SimpleCarousel({ images }) {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[600px] bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+      className={`relative w-full h-[600px] ${
+        noBackground
+          ? "bg-transparent"
+          : "bg-gradient-to-b from-gray-50 to-white"
+      } overflow-hidden`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onWheel={handleWheel}
