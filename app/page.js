@@ -1,103 +1,279 @@
+"use client";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import Image from "next/image";
+import InteractiveCarousel from "@/components/InteractiveCarousel";
+import HowItWorks from "@/components/HowItWorks";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const industryImages = [
+    "https://picsum.photos/seed/picsum1/600/800",
+    "https://picsum.photos/seed/picsum2/600/800",
+    "https://picsum.photos/seed/picsum3/600/800",
+    "https://picsum.photos/seed/picsum4/600/800",
+    "https://picsum.photos/seed/picsum5/600/800",
+    "https://picsum.photos/seed/picsum6/600/800",
+    "https://picsum.photos/seed/picsum7/600/800",
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const industries = [
+    "E-commerce",
+    "Real Estate",
+    "Healthcare",
+    "Legal",
+    "Automotive",
+    "Hospitality",
+    "Fitness & Wellness",
+    "Education",
+  ];
+
+  const howItWorksSteps = [
+    {
+      icon: "calendar",
+      title: "We Map Your Chaos",
+      description:
+        "30-minute call to understand your business. We identify every repetitive task stealing your time.",
+    },
+    {
+      icon: "settings",
+      title: "We Build Your System",
+      description:
+        "Our team sets up everything. No learning curve. No tech headaches. You keep working, we handle the setup.",
+    },
+    {
+      icon: "rocket",
+      title: "You Get Your Life Back",
+      description:
+        "Everything runs on autopilot. Support included. Scale without the stress.",
+    },
+  ];
+  // Imágenes para cada paso
+  const howItWorksImages = [
+    "https://picsum.photos/seed/discovery/600/800",
+    "https://picsum.photos/seed/implementation/600/800",
+    "https://picsum.photos/seed/freedom/600/800",
+  ];
+
+  return (
+    <div className="min-h-screen bg-white text-[var(--foreground)]">
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
+        {/* --- Columna Izquierda: Contenido --- */}
+        <div className="flex justify-center items-center py-16 md:py-0 px-8 sm:px-16">
+          <div className="max-w-xl flex flex-col space-y-8 text-center md:text-left">
+            {/* Headline Principal con subrayado SVG ajustado */}
+            <h1 className="text-5xl lg:text-6xl font-semibold leading-tight">
+              Your Business Running{" "}
+              <span className="relative inline-block">
+                Without You
+                <svg
+                  className="absolute -bottom-3 -left-2 w-full"
+                  height="35"
+                  viewBox="0 0 240 35" // Aumentado el ancho del viewBox
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M10 25 Q80 15, 160 20 T230 25" // Ajustada la curva
+                    stroke="url(#gradient-headline)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    fill="none"
+                    opacity="0.9"
+                  />
+                  <path
+                    d="M8 28 Q85 18, 165 23 T232 28" // Ajustada la curva
+                    stroke="url(#gradient-headline-secondary)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    fill="none"
+                    opacity="0.5"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="gradient-headline"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="#5B4FE9" />
+                      <stop offset="50%" stopColor="#E94F8A" />
+                      <stop offset="100%" stopColor="#F9A826" />
+                    </linearGradient>
+                    <linearGradient
+                      id="gradient-headline-secondary"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="#5B4FE9" stopOpacity="0.5" />
+                      <stop
+                        offset="50%"
+                        stopColor="#E94F8A"
+                        stopOpacity="0.5"
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor="#F9A826"
+                        stopOpacity="0.5"
+                      />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+            </h1>
+
+            {/* Subheadline con nuevo color */}
+            <p
+              className="text-xl lg:text-2xl"
+              style={{ color: "var(--foreground-muted)" }}
+            >
+              We handle the boring stuff. You handle the growth.
+            </p>
+
+            {/* Lista de Beneficios con nuevo color */}
+            <div className="space-y-4 text-lg text-left">
+              {[
+                {
+                  bold: "Every follow-up sent.",
+                  normal: "All happening while you sleep.",
+                },
+                {
+                  bold: "Every invoice collected.",
+                  normal: "Focus on what you love.",
+                },
+                {
+                  bold: "Every lead nurtured.",
+                  normal: "No tools to learn, no systems to manage.",
+                },
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <AutoAwesomeIcon
+                    style={{
+                      color: "var(--orbit-blue)",
+                      marginTop: "4px",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span style={{ color: "var(--foreground-muted)" }}>
+                    <strong>{item.bold}</strong> {item.normal}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Texto final con resaltado */}
+            <p
+              className="text-lg font-medium pt-2"
+              style={{ color: "var(--foreground-muted)" }}
+            >
+              We set it up, we run it,{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-[var(--foreground)]">
+                  you grow.
+                </span>
+                <span className="absolute bottom-0 left-0 w-full h-1/2 bg-[#F9A826]/40 -skew-x-12 z-0"></span>
+              </span>
+            </p>
+
+            {/* CTA */}
+            <div className="pt-4 flex justify-center md:justify-start">
+              <button
+                className="w-full sm:w-auto px-10 py-4 rounded-full font-medium text-base text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+                style={{ backgroundColor: "var(--orbit-blue)" }}
+              >
+                Automate My Business
+              </button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        {/* --- Columna Derecha: Imagen --- */}
+        <div className="relative w-full h-full hidden md:block">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/home_01.jpg"
+            alt="A smiling professional indicating success with business automation"
+            fill
+            className="object-cover"
+            priority
+            sizes="50vw"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+        </div>
+      </section>
+      {/* --- Sección 2. Industrias --- */}
+      <section id="industries" className="relative py-20 bg-[#f5f7fb]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-semibold">
+                Industries We&apos;ve Transformed:
+              </h2>
+              <p className="mt-3 max-w-2xl text-[var(--foreground-muted)]">
+                From lead-gen to fulfillment, we plug automation into your stack
+                and tailor playbooks per vertical.
+              </p>
+            </div>
+
+            <a
+              href="#cases"
+              className="hidden md:inline-block text-sm font-medium underline underline-offset-4"
+            >
+              View case studies →
+            </a>
+          </div>
+
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {industries.map((i) => (
+              <li
+                key={i}
+                className="px-3 py-1.5 rounded-full text-sm bg-white border border-black/5 shadow-sm"
+              >
+                {i}
+              </li>
+            ))}
+          </ul>
+
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen">
+            <InteractiveCarousel
+              images={industryImages}
+              noBackground
+              fullWidth
+            />
+          </div>
+        </div>
+      </section>
+      {/* --- Sección 3. How It Works --- */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Headers */}
+          <div className="text-center mb-8">
+            <h2 className="text-4xl md:text-5xl font-semibold mb-4">
+              How It Works
+            </h2>
+            <p className="text-xl" style={{ color: "var(--foreground-muted)" }}>
+              From chaos to calm in 3 simple steps
+            </p>
+          </div>
+
+          {/* Componente How It Works */}
+          <HowItWorks
+            steps={howItWorksSteps}
+            ctaText="Start With Free Audit →"
+            ctaAction={() => console.log("CTA clicked")}
+            images={howItWorksImages}
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+          {/* Texto inferior */}
+          <p
+            className="text-center mt-16 text-lg"
+            style={{ color: "var(--foreground-muted)" }}
+          >
+            Most clients see results in the first week. All clients see
+            transformation within 30 days.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

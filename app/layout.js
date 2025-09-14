@@ -3,6 +3,7 @@ import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 // Configuración de la fuente Poppins
 const poppins = Poppins({
@@ -20,6 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.variable}>
+      <GoogleTagManager gtmId="GTM-W28JQMJK" />
       <body className="antialiased">
         <ThemeProvider theme={theme}>
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>

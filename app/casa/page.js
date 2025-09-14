@@ -247,7 +247,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           {/* Headers */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-4xl md:text-5xl font-semibold mb-4">
               How It Works
             </h2>
