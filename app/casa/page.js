@@ -2,6 +2,7 @@
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import Image from "next/image";
 import InteractiveCarousel from "@/components/InteractiveCarousel";
+import HowItWorks from "@/components/HowItWorks";
 
 export default function Home() {
   const industryImages = [
@@ -23,6 +24,27 @@ export default function Home() {
     "Hospitality",
     "Fitness & Wellness",
     "Education",
+  ];
+
+  const howItWorksSteps = [
+    {
+      icon: "calendar",
+      title: "We Map Your Chaos",
+      description:
+        "30-minute call to understand your business. We identify every repetitive task stealing your time.",
+    },
+    {
+      icon: "settings",
+      title: "We Build Your System",
+      description:
+        "Our team sets up everything. No learning curve. No tech headaches. You keep working, we handle the setup.",
+    },
+    {
+      icon: "rocket",
+      title: "You Get Your Life Back",
+      description:
+        "Everything runs on autopilot. Support included. Scale without the stress.",
+    },
   ];
 
   return (
@@ -213,6 +235,37 @@ export default function Home() {
               fullWidth
             />
           </div>
+        </div>
+      </section>
+      {/* --- Sección 3. How It Works --- */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Headers */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold mb-4">
+              How It Works
+            </h2>
+            <p className="text-xl" style={{ color: "var(--foreground-muted)" }}>
+              From chaos to calm in 3 simple steps
+            </p>
+          </div>
+
+          {/* Componente How It Works */}
+          <HowItWorks
+            steps={howItWorksSteps}
+            ctaText="Start With Free Audit →"
+            ctaAction={() => console.log("CTA clicked")}
+            imageUrl="https://picsum.photos/seed/automation/600/800"
+          />
+
+          {/* Texto inferior */}
+          <p
+            className="text-center mt-16 text-lg"
+            style={{ color: "var(--foreground-muted)" }}
+          >
+            Most clients see results in the first week. All clients see
+            transformation within 30 days.
+          </p>
         </div>
       </section>
     </div>
