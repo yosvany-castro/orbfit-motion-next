@@ -46,6 +46,12 @@ export default function Home() {
         "Everything runs on autopilot. Support included. Scale without the stress.",
     },
   ];
+  // Imágenes para cada paso
+  const howItWorksImages = [
+    "https://picsum.photos/seed/discovery/600/800",
+    "https://picsum.photos/seed/implementation/600/800",
+    "https://picsum.photos/seed/freedom/600/800",
+  ];
 
   return (
     <div className="min-h-screen bg-white text-[var(--foreground)]">
@@ -255,7 +261,7 @@ export default function Home() {
             steps={howItWorksSteps}
             ctaText="Start With Free Audit →"
             ctaAction={() => console.log("CTA clicked")}
-            imageUrl="https://picsum.photos/seed/automation/600/800"
+            images={howItWorksImages}
           />
 
           {/* Texto inferior */}
